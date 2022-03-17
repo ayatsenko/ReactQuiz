@@ -1,24 +1,39 @@
 import React from 'react'
 import classes from './ActiveQuiz.module.scss'
+import AnswersList from './AnswersList/AnswersList'
 
-// eslint-disable-next-line no-unused-vars
-const ActiveQuiz = props => (
+const ActiveQuiz = props => {
+  // console.log('ActiveQuiz', props)
+
+  return (
     <div className={classes.ActiveQuiz}>
         <p className={classes.Question}>
             <span>
-                <strong>2.</strong>&nbsp;
-                How are you?
+                {/* eslint-disable-next-line react/prop-types */}
+                <strong>{props.answerNumber}</strong>.&nbsp;
+                {/* eslint-disable-next-line react/prop-types */}
+                {props.question}
             </span>
-            <small>4 из 12</small>
+            {/* eslint-disable-next-line react/prop-types */}
+            <small>{props.answerNumber} из {props.quizLenght}</small>
         </p>
 
-        <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-        </ul>
+        <AnswersList
+            state={
+                // eslint-disable-next-line react/prop-types
+                props.state
+            }
+            answers={
+                // eslint-disable-next-line react/prop-types
+                props.answers
+            }
+            onAnswerClick={
+            // eslint-disable-next-line react/prop-types
+                props.onAnswerClick
+            }
+           />
     </div>
-)
+  )
+}
 
 export default ActiveQuiz
