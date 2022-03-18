@@ -1,9 +1,11 @@
 import React from 'react'
 import classes from './FinishedQuiz.module.scss'
 import Button from '../UI/Button/Button'
+import { Link } from 'react-router-dom'
 
 // eslint-disable-next-line no-unused-vars
 const FinishedQuiz = props => {
+  console.log('FinishedQuiz', props)
   // eslint-disable-next-line react/prop-types
   const successCount = Object.keys(props.results).reduce((total, key) => {
     // eslint-disable-next-line react/prop-types
@@ -13,11 +15,14 @@ const FinishedQuiz = props => {
 
     return total
   }, 0)
+
   return (
         <div className={classes.FinishedQuiz}>
             <ul>
                 {/* eslint-disable-next-line react/prop-types */}
                 {props.quiz.map((quizItem, index) => {
+                  // eslint-disable-next-line no-debugger
+                  // debugger
                   const cls = [
                     'fa',
                     // eslint-disable-next-line react/prop-types
@@ -29,9 +34,9 @@ const FinishedQuiz = props => {
                         <li
                             key={index}
                         >
-                            <strong>{index + 1}</strong>. &nbsp;
+                            <strong>{index + 1}</strong>.&nbsp;
                             {quizItem.question}
-                            <i className={cls.join(' ')} />
+                            <i className={cls.join(' ')} />&nbsp;
                         </li>
                   )
                 })}
@@ -43,7 +48,9 @@ const FinishedQuiz = props => {
             <div>
                 {/* eslint-disable-next-line react/prop-types */}
                 <Button onClick={props.onRetry} type="primary">Повторить</Button>
-                <Button type="success">Перейти в список тестов</Button>
+                <Link to="/">
+                    <Button type="success">Перейти в список тестов</Button>
+                </Link>
             </div>
         </div>
   )

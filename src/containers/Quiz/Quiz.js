@@ -26,8 +26,8 @@ class Quiz extends Component {
         rightAnswerId: 3,
         id: 2,
         answers: [
-          { text: 'Черный', id: 1 },
-          { text: 'Синий', id: 2 },
+          { text: 'Бежевый', id: 1 },
+          { text: 'Белый', id: 2 },
           { text: 'Красный', id: 3 },
           { text: 'Желтый', id: 4 }
         ]
@@ -70,9 +70,9 @@ class Quiz extends Component {
         window.clearTimeout(timeout)
       }, 1000)
     } else {
-      results[answerId] = 'error'
+      results[question.id] = 'error'
       this.setState({
-        answerState: { [question.id]: 'error' },
+        answerState: { [answerId]: 'error' },
         results
       })
     }
